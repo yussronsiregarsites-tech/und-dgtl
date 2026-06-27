@@ -10,8 +10,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Undangan">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="manifest" href="../../manifest.json">
-<link rel="apple-touch-icon" href="../../icon-192.png">
+<!-- ✅ PERBAIKAN: Path relatif ke parent folder (../) -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../icon-192.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,8 +25,6 @@ h1, h2 { font-family: 'Great Vibes', cursive; }
 h3, .font-engage { font-family: 'Engagement', cursive; }
 p, body, input, textarea, select, button, label { font-family: "Poppins", sans-serif; }
 body { background-color: #c47a7a; color: #3d2a2a; overflow-x: hidden; }
-
-/* ====== ROSE THEME COLORS ====== */
 :root {
 --rose: #c47a7a;
 --rose-mid: #d49191;
@@ -35,13 +34,11 @@ body { background-color: #c47a7a; color: #3d2a2a; overflow-x: hidden; }
 --cream: #fef5f5;
 --bg-pattern: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80');
 }
-
 .text-rose { color: var(--rose); }
 .text-rose-light { color: var(--rose-light); }
 .text-rose-pale { color: var(--rose-pale); }
 .bg-rose { background-color: var(--rose-mid); }
 .border-rose { border-color: var(--rose-light); }
-
 #main-loader {
 position: fixed; inset: 0; background: var(--cream); z-index: 999999;
 display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -58,14 +55,12 @@ content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 3px so
 content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 3px solid transparent; border-bottom-color: var(--rose-light); animation: spin 0.6s linear infinite reverse;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-
 .awal {
 background-color: var(--cream); position: fixed; inset: 0; z-index: 99998;
 display: flex; flex-direction: column; align-items: center; justify-content: center;
 transition: opacity 0.7s ease, transform 0.7s ease, visibility 0.7s ease;
 }
 .awal.opened { opacity: 0; transform: scale(1.05); visibility: hidden; pointer-events: none; }
-
 .box-container {
 background-image: var(--bg-pattern); background-repeat: repeat-y; background-position: center top; background-size: 100% auto; background-color: var(--cream); position: relative; overflow: hidden;
 }
@@ -73,7 +68,6 @@ background-image: var(--bg-pattern); background-repeat: repeat-y; background-pos
 width: 200px; height: 200px; border-radius: 50%; border: 3px solid var(--rose-light); margin: 0 auto; background-size: cover; background-position: center top; box-shadow: 0 8px 30px rgba(196, 122, 122, 0.25);
 }
 .border-frame { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; pointer-events: none; }
-
 .button-rose {
 background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: #fff; padding: 14px 36px; border-radius: 8px; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(196, 122, 122, 0.35); position: relative; overflow: hidden;
 }
@@ -81,7 +75,6 @@ background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: #fff; 
 .button-rose:hover::after { transform: translateX(100%); }
 .button-rose:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(196, 122, 122, 0.45); }
 .button-rose:active { transform: translateY(0); }
-
 .countdown-item { display: inline-flex; flex-direction: column; justify-content: center; align-items: center; width: 72px; height: 80px; color: white; border-radius: 12px; margin: 0 5px; background: linear-gradient(145deg, var(--rose-mid), var(--rose)); box-shadow: 0 4px 15px rgba(196, 122, 122, 0.3); position: relative; overflow: hidden; }
 .countdown-item::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%); }
 .countdown-item:nth-child(1) { animation: cd-pulse 2s ease-in-out infinite 0s; }
@@ -89,10 +82,8 @@ background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: #fff; 
 .countdown-item:nth-child(3) { animation: cd-pulse 2s ease-in-out infinite 0.3s; }
 .countdown-item:nth-child(4) { animation: cd-pulse 2s ease-in-out infinite 0.45s; }
 @keyframes cd-pulse { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-
 .shadow-custom { box-shadow: 0 10px 40px rgba(196, 122, 122, 0.12), 0 2px 10px rgba(0, 0, 0, 0.06); }
 .box-pengantin { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 40px 24px; border-radius: 16px; margin-bottom: 30px; position: relative; z-index: 10; border: 1px solid rgba(232, 180, 180, 0.3); }
-
 .ornament { position: absolute; pointer-events: none; z-index: 0; opacity: 0.7; }
 @keyframes float-tl { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(5px, 8px); } }
 @keyframes float-tr { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-5px, 8px); } }
@@ -102,32 +93,26 @@ background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: #fff; 
 .ornament-tr { top: -40px; right: -40px; width: 180px; animation: float-tr 8s ease-in-out infinite; }
 .ornament-bl { bottom: -40px; left: -40px; width: 180px; animation: float-bl 7s ease-in-out infinite; }
 .ornament-br { bottom: -40px; right: -40px; width: 180px; animation: float-br 8s ease-in-out infinite; }
-
 .fix-menu { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px); background: rgba(254, 245, 245, 0.95); backdrop-filter: blur(12px); border-radius: 30px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); z-index: 999; display: flex; gap: 18px; padding: 10px 24px; border: 1px solid rgba(232, 180, 180, 0.3); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease; opacity: 0; }
 .fix-menu.visible { transform: translateX(-50%) translateY(0); opacity: 1; }
 .fix-menu a { color: var(--text-muted); font-size: 18px; transition: 0.3s ease; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; }
 .fix-menu a:hover { color: var(--rose); transform: translateY(-2px); }
 .fix-menu a.active { color: white; background: var(--rose-mid); box-shadow: 0 2px 10px rgba(196, 122, 122, 0.35); }
-
 .audio-btn { position: fixed; bottom: 85px; right: 20px; z-index: 999; background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: white; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(196, 122, 122, 0.4); cursor: pointer; transition: 0.3s ease; border: none; }
 .audio-btn:hover { transform: scale(1.1); }
 .audio-btn.playing { animation: audio-pulse 1.5s ease-in-out infinite; }
 .audio-btn.playing i { animation: music-rotate 3s linear infinite; display: inline-block; }
 @keyframes audio-pulse { 0%, 100% { box-shadow: 0 4px 15px rgba(196, 122, 122, 0.4); } 50% { box-shadow: 0 4px 25px rgba(232, 180, 180, 0.7), 0 0 0 6px rgba(232, 180, 180, 0.1); } }
 @keyframes music-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
 .event-card { background: white; border-radius: 160px 160px 0 0; padding: 60px 24px 40px; text-align: center; box-shadow: 0 10px 40px rgba(196, 122, 122, 0.1); border: 1px solid rgba(232, 180, 180, 0.2); position: relative; z-index: 2; }
 .event-card-bottom { border-radius: 0 0 160px 160px; }
 .event-connector { background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: white; padding: 10px 0; text-align: center; letter-spacing: 4px; font-weight: 700; font-size: 13px; box-shadow: 0 4px 15px rgba(196, 122, 122, 0.25); position: relative; z-index: 3; }
 .event-icon { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 20px; box-shadow: 0 4px 15px rgba(196, 122, 122, 0.3); }
 .event-date-box { background: var(--rose-ghost); border-top: 2px solid var(--rose-pale); border-bottom: 2px solid var(--rose-pale); padding: 16px 20px; margin: 0 8px 20px; border-radius: 10px; }
-
 .story-connector { width: 2px; height: 50px; margin: 0 auto; background: linear-gradient(to bottom, var(--rose-pale), var(--rose-light)); position: relative; }
 .story-connector::after { content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: var(--rose-light); }
-
 .gallery-item { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); }
 .gallery-item:hover { transform: scale(1.03) translateY(-4px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); }
-
 #lightbox { transition: opacity 0.35s ease; }
 #lightbox.active { opacity: 1 !important; pointer-events: all !important; }
 #lightbox.active #lightbox-img { transform: scale(1) !important; }
@@ -137,36 +122,27 @@ background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: #fff; 
 .lb-prev { left: 16px; }
 .lb-next { right: 16px; }
 .lb-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255, 255, 255, 0.7); font-size: 13px; font-weight: 500; background: rgba(0, 0, 0, 0.4); padding: 4px 14px; border-radius: 20px; z-index: 50; }
-
 .bank-card { background: linear-gradient(135deg, #fafafa, #f5f5f5); border: 1px solid #e5e5e5; border-radius: 16px; padding: 20px; transition: 0.3s ease; }
 .bank-card:hover { border-color: var(--rose-pale); box-shadow: 0 8px 25px rgba(196, 122, 122, 0.1); transform: translateY(-2px); }
-
 .rsvp-input { width: 100%; padding: 10px 14px; border: 2px solid #e5e7eb; border-radius: 10px; outline: none; transition: 0.3s ease; background: #fafafa; font-size: 14px; }
 .rsvp-input:focus { border-color: var(--rose-light); background: white; box-shadow: 0 0 0 3px rgba(232, 180, 180, 0.15); }
-
 #settings-modal, #pin-modal { transition: opacity 0.3s ease; }
 #settings-modal.active, #pin-modal.active { opacity: 1 !important; pointer-events: all !important; }
 #settings-modal.active #settings-modal-content, #pin-modal.active #pin-modal-content { transform: scale(1) !important; }
 #settings-modal-content, #pin-modal-content { transition: transform 0.3s ease; }
-
 .toast-item { background: white; border-radius: 12px; padding: 14px 20px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); border-left: 4px solid var(--rose-mid); transform: translateX(120%); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: all; max-width: 340px; }
 .toast-item.show { transform: translateX(0); }
-
 .petal { position: fixed; top: -30px; z-index: 99997; pointer-events: none; width: 12px; height: 12px; border-radius: 50% 0 50% 0; opacity: 0.6; }
 @keyframes petal-fall { 0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); opacity: 0.7; } 70% { opacity: 0.5; } 100% { transform: translate3d(20px, 100vh, 0) rotate(720deg) scale(0.3); opacity: 0; } }
-
 .sync-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
 .sync-badge.cloud { background: #dcfce7; color: #166534; }
 .sync-badge.local { background: #fef9c3; color: #854d0e; }
 .sync-badge.offline { background: #fee2e2; color: #991b1b; }
-
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--cream); }
 ::-webkit-scrollbar-thumb { background: var(--rose-pale); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--rose-light); }
-
 .img-fallback { background: linear-gradient(135deg, var(--rose-ghost), var(--rose-pale)); display: flex; align-items: center; justify-content: center; color: var(--rose); font-size: 40px; }
-
 @media (max-width: 640px) {
 .countdown-item { width: 62px; height: 70px; margin: 0 3px; }
 .event-card { padding: 40px 16px 30px; border-radius: 100px 100px 0 0; }
@@ -174,11 +150,8 @@ background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: #fff; 
 .fix-menu { gap: 12px; padding: 8px 18px; }
 .fix-menu a { font-size: 16px; width: 32px; height: 32px; }
 }
-
 @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
 #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; width: 0%; background: linear-gradient(90deg, var(--rose), var(--rose-light), var(--rose)); z-index: 9999; transition: width 0.1s ease-out; box-shadow: 0 0 12px rgba(232, 180, 180, 0.7); }
-
 .section-header { text-align: center; margin-bottom: 3rem; position: relative; }
 .section-number { display: inline-block; font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 4px; color: var(--rose-light); text-transform: uppercase; margin-bottom: 0.75rem; padding: 4px 16px; border: 1px solid var(--rose-pale); border-radius: 20px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(4px); }
 .section-subtitle { font-family: 'Poppins', sans-serif; font-size: 12px; letter-spacing: 6px; text-transform: uppercase; color: var(--rose); font-weight: 600; margin-bottom: 0.5rem; }
@@ -187,11 +160,9 @@ background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: #fff; 
 .section-title-line::before, .section-title-line::after { content: ''; position: absolute; top: 50%; width: 6px; height: 6px; background: var(--rose-light); border-radius: 50%; transform: translateY(-50%); }
 .section-title-line::before { left: -12px; }
 .section-title-line::after { right: -12px; }
-
 .section-divider { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 2rem 0; color: var(--rose-light); }
 .section-divider .line { flex: 1; max-width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--rose-pale), transparent); }
 .section-divider .diamond { width: 10px; height: 10px; background: var(--rose-light); transform: rotate(45deg); box-shadow: 0 0 10px rgba(232, 180, 180, 0.5); }
-
 [data-aos="reveal-up"] { opacity: 0; transform: translateY(100px) scale(0.95); transition-property: transform, opacity; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
 [data-aos="reveal-up"].aos-animate { opacity: 1; transform: translateY(0) scale(1); }
 [data-aos="reveal-down"] { opacity: 0; transform: translateY(-100px) scale(0.95); transition-property: transform, opacity; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
@@ -206,50 +177,40 @@ background: linear-gradient(135deg, var(--rose-mid), var(--rose)); color: #fff; 
 [data-aos="landing"].aos-animate { opacity: 1; transform: translateY(0) scale(1); }
 [data-aos="clip-up"] { clip-path: inset(100% 0 0 0); transition-property: clip-path, opacity; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
 [data-aos="clip-up"].aos-animate { clip-path: inset(0 0 0 0); }
-
 @keyframes glow-pulse { 0%, 100% { box-shadow: 0 4px 15px rgba(196, 122, 122, 0.3); } 50% { box-shadow: 0 4px 25px rgba(232, 180, 180, 0.6), 0 0 0 8px rgba(232, 180, 180, 0.1); } }
 [data-aos="glow-in"] { opacity: 0; transform: scale(0.7); transition-property: transform, opacity; }
 [data-aos="glow-in"].aos-animate { opacity: 1; transform: scale(1); animation: glow-pulse 2s ease-in-out; }
-
 [data-aos="stagger-children"]>* { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
 [data-aos="stagger-children"].aos-animate>* { opacity: 1; transform: translateY(0); }
 [data-aos="stagger-children"].aos-animate>*:nth-child(1) { transition-delay: 0.05s; }
 [data-aos="stagger-children"].aos-animate>*:nth-child(2) { transition-delay: 0.15s; }
 [data-aos="stagger-children"].aos-animate>*:nth-child(3) { transition-delay: 0.25s; }
 [data-aos="stagger-children"].aos-animate>*:nth-child(4) { transition-delay: 0.35s; }
-
 .split-text { display: inline-block; overflow: hidden; }
 .split-text .word { display: inline-block; opacity: 0; transform: translateY(100%); transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease; margin-right: 0.25em; }
 .split-text.animate .word { opacity: 1; transform: translateY(0); }
-
 .parallax-layer { will-change: transform; }
-
 .scroll-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--rose); opacity: 0.8; animation: scroll-hint-bounce 2s ease-in-out infinite; z-index: 5; text-align: center; }
 .scroll-hint-text { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
 @keyframes scroll-hint-bounce { 0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.8; } 50% { transform: translateX(-50%) translateY(12px); opacity: 1; } }
-
 .section-reveal { position: relative; }
 .section-reveal::before { content: ''; position: absolute; inset: 0; background: var(--cream); z-index: 100; transform-origin: top; transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1); pointer-events: none; }
 .section-reveal.revealed::before { transform: scaleY(0); }
-
 .bank-entry { background: #f9f9f9; border-radius: 12px; padding: 16px; border: 1px solid #e5e7eb; transition: 0.3s ease; position: relative; }
 .bank-entry:hover { border-color: var(--rose-pale); }
 .bank-entry .remove-bank-btn { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #ef4444; cursor: pointer; font-size: 16px; padding: 4px 6px; border-radius: 6px; transition: 0.2s; }
 .bank-entry .remove-bank-btn:hover { background: #fee2e2; }
 .bank-entry .bank-visibility-toggle { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #6b7280; cursor: pointer; }
 .bank-entry .bank-visibility-toggle input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--rose-mid); cursor: pointer; }
-
 .video-toggle-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #f9f9f9; border-radius: 10px; border: 1px solid #e5e7eb; }
 .video-toggle-row label { font-size: 13px; font-weight: 500; color: #374151; cursor: pointer; }
 .video-toggle-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--rose-mid); cursor: pointer; }
-
 .photo-upload-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .photo-upload-row .preview-wrap { flex-shrink: 0; width: 80px; height: 80px; border-radius: 8px; overflow: hidden; border: 2px solid var(--rose-pale); background: #f3f4f6; display: flex; align-items: center; justify-content: center; }
 .photo-upload-row .preview-wrap img { width: 100%; height: 100%; object-fit: cover; }
 .photo-upload-row .preview-wrap .no-image { font-size: 20px; color: #ccc; }
 .photo-upload-row .field-group { flex: 1; min-width: 180px; }
 .photo-upload-row .field-group input { width: 100%; }
-
 .pin-input {
 width: 48px; height: 56px; text-align: center; font-size: 24px; font-weight: 700;
 border: 2px solid #e5e7eb; border-radius: 12px; outline: none;
@@ -263,7 +224,6 @@ transition: 0.3s ease; background: #fafafa; color: var(--rose);
 25% { transform: translateX(-8px); }
 75% { transform: translateX(8px); }
 }
-
 #pwa-install-btn {
 position: fixed; bottom: 85px; left: 20px; z-index: 998;
 background: linear-gradient(135deg, var(--rose-mid), var(--rose));
@@ -274,14 +234,12 @@ transition: 0.3s ease; border: none; font-size: 18px;
 }
 #pwa-install-btn:hover { transform: scale(1.1); }
 #pwa-install-btn.show { display: flex; }
-
 .footer-heart {
     display: inline-block;
     cursor: default;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
 }
-
 .wa-promo-section {
     margin-top: 2rem;
     padding-top: 1.5rem;
@@ -320,7 +278,6 @@ transition: 0.3s ease; border: none; font-size: 18px;
     margin-top: 0.75rem;
 }
 .wa-promo-phone i { font-size: 10px; margin-right: 4px; }
-
 .decor-section-title {
     font-size: 11px;
     color: #374151;
@@ -411,7 +368,7 @@ transition: 0.3s ease; border: none; font-size: 18px;
 <h1 data-aos="zoom-in" data-aos-delay="150" class="text-4xl text-rose mb-8">Wedding Of</h1>
 <div data-aos="zoom-rotate" data-aos-delay="300" data-aos-duration="1200" class="relative w-[240px] h-[240px] mx-auto mb-8">
 <div id="val-fotoSampul" class="circle-img-wrapper absolute inset-0 m-auto" style="width:190px;height:190px;"></div>
-<img id="border-frame-awal" src="https://pngtree.com/freepng/rose-gold-frame_5892349.html" class="border-frame" style="width:280px;" alt="Frame" loading="lazy">
+<img id="border-frame-awal" src="" class="border-frame" style="width:280px;" alt="Frame" loading="lazy">
 </div>
 <h1 data-aos="landing" data-aos-delay="500" class="text-5xl text-rose mb-6 relative z-10">
 <span class="val-pria-nick"></span> <span class="text-3xl">&</span> <span class="val-wanita-nick"></span>
@@ -431,11 +388,11 @@ transition: 0.3s ease; border: none; font-size: 18px;
 <i class="fa-solid fa-music text-sm"></i>
 </div>
 <section id="home" class="box-container min-h-screen py-20 px-4 text-center flex flex-col items-center justify-center relative">
-<img id="orn-home-tl" src="https://pngtree.com/freepng/rose-gold-ornament_6234567.html" class="ornament ornament-tl parallax-layer" data-parallax-speed="0.2" alt="" loading="lazy">
-<img id="orn-home-tr" src="https://pngtree.com/freepng/rose-gold-ornament_6234568.html" class="ornament ornament-tr parallax-layer" data-parallax-speed="-0.2" alt="" loading="lazy">
+<img id="orn-home-tl" src="" class="ornament ornament-tl parallax-layer" data-parallax-speed="0.2" alt="" loading="lazy">
+<img id="orn-home-tr" src="" class="ornament ornament-tr parallax-layer" data-parallax-speed="-0.2" alt="" loading="lazy">
 <div class="relative w-[280px] h-[280px] mx-auto mt-8 mb-6" data-aos="zoom-rotate" data-aos-duration="1400">
 <div id="val-fotoSampul2" class="circle-img-wrapper absolute inset-0 m-auto" style="width:220px;height:220px;"></div>
-<img id="border-frame-home" src="https://pngtree.com/freepng/rose-gold-frame_5892349.html" class="border-frame" style="width:320px;" alt="Frame" loading="lazy">
+<img id="border-frame-home" src="" class="border-frame" style="width:320px;" alt="Frame" loading="lazy">
 </div>
 <h1 class="text-5xl sm:text-6xl text-rose mt-2 mb-3" data-aos="reveal-up" data-aos-duration="1000">
 <span class="val-pria-nick"></span> <span class="text-3xl sm:text-4xl">&</span> <span class="val-wanita-nick"></span>
@@ -447,8 +404,8 @@ transition: 0.3s ease; border: none; font-size: 18px;
 <div class="countdown-item"><span id="cd-mins" class="text-2xl font-bold">0</span><span class="text-[10px] mt-0.5 opacity-80">Menit</span></div>
 <div class="countdown-item"><span id="cd-secs" class="text-2xl font-bold">0</span><span class="text-[10px] mt-0.5 opacity-80">Detik</span></div>
 </div>
-<img id="orn-home-bl" src="https://pngtree.com/freepng/rose-gold-ornament_6234569.html" class="ornament ornament-bl parallax-layer" data-parallax-speed="0.15" alt="" loading="lazy">
-<img id="orn-home-br" src="https://pngtree.com/freepng/rose-gold-ornament_6234570.html" class="ornament ornament-br parallax-layer" data-parallax-speed="-0.15" alt="" loading="lazy">
+<img id="orn-home-bl" src="" class="ornament ornament-bl parallax-layer" data-parallax-speed="0.15" alt="" loading="lazy">
+<img id="orn-home-br" src="" class="ornament ornament-br parallax-layer" data-parallax-speed="-0.15" alt="" loading="lazy">
 <div class="scroll-hint">
 <div class="scroll-hint-text">Scroll</div>
 <i class="fa-solid fa-chevron-down text-xl"></i>
@@ -470,8 +427,8 @@ transition: 0.3s ease; border: none; font-size: 18px;
 </section>
 <div class="section-divider box-container"><div class="line"></div><div class="diamond" data-aos="zoom-rotate"></div><div class="line"></div></div>
 <section id="couple" class="box-container py-20 px-4 text-center relative section-reveal">
-<img id="orn-couple-tl" src="https://pngtree.com/freepng/rose-gold-ornament_6234571.html" class="ornament ornament-tl parallax-layer" data-parallax-speed="0.15" alt="" loading="lazy">
-<img id="orn-couple-tr" src="https://pngtree.com/freepng/rose-gold-ornament_6234572.html" class="ornament ornament-tr parallax-layer" data-parallax-speed="-0.15" alt="" loading="lazy">
+<img id="orn-couple-tl" src="" class="ornament ornament-tl parallax-layer" data-parallax-speed="0.15" alt="" loading="lazy">
+<img id="orn-couple-tr" src="" class="ornament ornament-tr parallax-layer" data-parallax-speed="-0.15" alt="" loading="lazy">
 <div class="max-w-4xl mx-auto">
 <div class="section-header" data-aos="reveal-down" data-aos-duration="900">
 <div class="section-number">Chapter 02</div>
@@ -528,8 +485,8 @@ transition: 0.3s ease; border: none; font-size: 18px;
 </section>
 <div class="section-divider box-container"><div class="line"></div><div class="diamond" data-aos="zoom-rotate"></div><div class="line"></div></div>
 <section id="event" class="box-container py-20 px-4 relative section-reveal">
-<img id="orn-event-tl" src="https://pngtree.com/freepng/rose-gold-ornament_6234573.html" class="ornament ornament-tl parallax-layer" data-parallax-speed="0.15" alt="" loading="lazy">
-<img id="orn-event-tr" src="https://pngtree.com/freepng/rose-gold-ornament_6234574.html" class="ornament ornament-tr parallax-layer" data-parallax-speed="-0.15" alt="" loading="lazy">
+<img id="orn-event-tl" src="" class="ornament ornament-tl parallax-layer" data-parallax-speed="0.15" alt="" loading="lazy">
+<img id="orn-event-tr" src="" class="ornament ornament-tr parallax-layer" data-parallax-speed="-0.15" alt="" loading="lazy">
 <div class="max-w-lg mx-auto text-center relative z-10">
 <div class="section-header" data-aos="reveal-down" data-aos-duration="900">
 <div class="section-number">Chapter 04</div>
@@ -630,8 +587,8 @@ transition: 0.3s ease; border: none; font-size: 18px;
 </section>
 <div class="section-divider box-container"><div class="line"></div><div class="diamond" data-aos="zoom-rotate"></div><div class="line"></div></div>
 <footer class="box-container py-20 px-4 text-center relative overflow-hidden section-reveal">
-<img id="orn-footer-tl" src="https://pngtree.com/freepng/rose-gold-ornament_6234575.html" class="ornament ornament-tl opacity-40 parallax-layer" data-parallax-speed="0.1" alt="" loading="lazy">
-<img id="orn-footer-tr" src="https://pngtree.com/freepng/rose-gold-ornament_6234576.html" class="ornament ornament-tr opacity-40 parallax-layer" data-parallax-speed="-0.1" alt="" loading="lazy">
+<img id="orn-footer-tl" src="" class="ornament ornament-tl opacity-40 parallax-layer" data-parallax-speed="0.1" alt="" loading="lazy">
+<img id="orn-footer-tr" src="" class="ornament ornament-tr opacity-40 parallax-layer" data-parallax-speed="-0.1" alt="" loading="lazy">
 <div class="relative z-10 max-w-lg mx-auto">
 <div class="section-header" data-aos="reveal-down" data-aos-duration="900">
 <div class="section-number">The End</div>
@@ -641,7 +598,7 @@ transition: 0.3s ease; border: none; font-size: 18px;
 </div>
 <div class="relative w-[180px] h-[180px] mx-auto mb-8" data-aos="zoom-rotate" data-aos-duration="1200">
 <div id="val-fotoSampul3" class="circle-img-wrapper absolute inset-0 m-auto" style="width:150px;height:150px;"></div>
-<img id="border-frame-footer" src="https://pngtree.com/freepng/rose-gold-frame_5892349.html" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[230px] max-w-none pointer-events-none" alt="Frame" loading="lazy">
+<img id="border-frame-footer" src="" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[230px] max-w-none pointer-events-none" alt="Frame" loading="lazy">
 </div>
 <h1 class="text-5xl sm:text-6xl text-rose mb-3" data-aos="reveal-up"><span class="val-pria-nick"></span> & <span class="val-wanita-nick"></span></h1>
 <p class="text-xs text-gray-400 mt-8">Made with <span id="footer-heart" class="footer-heart text-red-400 px-0.5 text-base">❤️</span> for <span class="val-pria-nick"></span> & <span class="val-wanita-nick"></span></p>
@@ -660,8 +617,8 @@ transition: 0.3s ease; border: none; font-size: 18px;
     </p>
 </div>
 </div>
-<img id="orn-footer-bl" src="https://pngtree.com/freepng/rose-gold-ornament_6234577.html" class="ornament ornament-bl opacity-40 parallax-layer" data-parallax-speed="0.1" alt="" loading="lazy">
-<img id="orn-footer-br" src="https://pngtree.com/freepng/rose-gold-ornament_6234578.html" class="ornament ornament-br opacity-40 parallax-layer" data-parallax-speed="-0.1" alt="" loading="lazy">
+<img id="orn-footer-bl" src="" class="ornament ornament-bl opacity-40 parallax-layer" data-parallax-speed="0.1" alt="" loading="lazy">
+<img id="orn-footer-br" src="" class="ornament ornament-br opacity-40 parallax-layer" data-parallax-speed="-0.1" alt="" loading="lazy">
 <div class="h-[60px]"></div>
 </footer>
 </main>
@@ -956,44 +913,35 @@ AOS.init({
 duration: 1000, once: false, mirror: true,
 easing: 'ease-out-cubic', offset: 80, anchorPlacement: 'top-bottom'
 });
+// ✅ PERBAIKAN: URL Google Apps Script baru
 var GOOGLE_API_URL = "https://script.google.com/macros/s/AKfycbwjZBwzDQbRNhgiK4R4AkjxQjKW0cxWHwkPewkrnA5GHk2GqoJtKp4kl47I7RQjvAvi-Q/exec";
 var GALLERY_COUNT = 6;
 var FETCH_TIMEOUT = 10000;
 var ADMIN_PIN = null;
 var defaultData = {
-priaNick: "Fatrus", wanitaNick: "Luvinta",
-priaFull: "Ahmad Fatrussulukhi", wanitaFull: "Luvinta Citra Fitria",
-priaOrtu: "Bapak Jasro'i (Alm) & Ibu Siti Mutmainah (Cangaan - Genteng - Banyuwangi)",
-wanitaOrtu: "Bapak Majik Ismail & Ibu Nikmatul Sholikah (Yosowinangun - Jajag - Banyuwangi)",
+priaNick: "Nama", wanitaNick: "Pasangan",
+priaFull: "Nama Lengkap Pria", wanitaFull: "Nama Lengkap Wanita",
+priaOrtu: "Nama Orang Tua Pria",
+wanitaOrtu: "Nama Orang Tua Wanita",
 priaIg: "", wanitaIg: "",
-musicUrl: "https://example.com/music.mp3",
-fotoSampul: "",
-fotoPria: "",
-fotoWanita: "",
-story1Title: "Pertemuan Di Kereta Api", story1Desc: "Pertemuan tak terduga di sebuah kereta api...", story1Img: "",
-story2Title: "Lanjut Ke Pelaminan", story2Desc: "Setelah itu, Ryan dan Aria terus berhubungan...", story2Img: "",
-akadDate: "20 Juli 2026", akadTime: "09:00 WIB - Selesai", akadLokasi: "Rumah Bapak Majik di Jajag", akadMapUrl: "https://maps.app.goo.gl/TeRdppG4vnbVYjZR7",
-resepsiDate: "20 Juli 2026", resepsiTime: "11:00 WIB - Selesai", resepsiLokasi: "Rumah Bapak Majik di Jajag", resepsiMapUrl: "https://maps.app.goo.gl/TeRdppG4vnbVYjZR7",
-dinnerDate: "20 Juli 2026", dinnerTime: "18:00 WIB - Selesai", dinnerLokasi: "Rumah Bapak Majik di Jajag", dinnerMapUrl: "https://maps.app.goo.gl/TeRdppG4vnbVYjZR7",
-mapIframeUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=H54V%2BRJF%2C%20Warung%20nikmah%2C%20Jl.%20KH.%20Wahid%20Hasyim%2C%20Talunrejo%2C%20Sembulung%2C%20Kec.%20Cluring%2C%20Kabupaten%20Banyuwangi%2C%20Jawa%20Timur%2068486%2C%20Indonesia&t=&z=14&ie=UTF8&iwloc=B&output=embed",
-banks: [{ id: 'b1', name: 'BCA', rek: '12345678', an: 'Luvinta', visible: true }, { id: 'b2', name: 'BNI', rek: '0982309823', an: 'Fatrus', visible: true }],
-videoYoutubeUrl: "https://www.youtube.com/embed/7ztcdznpX9w", showVideo: true,
+musicUrl: "",
+fotoSampul: "", fotoPria: "", fotoWanita: "",
+story1Title: "Story 1", story1Desc: "Deskripsi story 1", story1Img: "",
+story2Title: "Story 2", story2Desc: "Deskripsi story 2", story2Img: "",
+akadDate: "Tanggal Akad", akadTime: "Jam Akad", akadLokasi: "Lokasi Akad", akadMapUrl: "",
+resepsiDate: "Tanggal Resepsi", resepsiTime: "Jam Resepsi", resepsiLokasi: "Lokasi Resepsi", resepsiMapUrl: "",
+dinnerDate: "Tanggal Dinner", dinnerTime: "Jam Dinner", dinnerLokasi: "Lokasi Dinner", dinnerMapUrl: "",
+mapIframeUrl: "",
+banks: [],
+videoYoutubeUrl: "", showVideo: true,
 galeri1: "", galeri2: "", galeri3: "", galeri4: "", galeri5: "", galeri6: "",
-countdownTarget: "2026-07-20", bukuTamu: [],
-backgroundImg: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80",
-borderFrame: "https://pngtree.com/freepng/rose-gold-frame_5892349.html",
-ornamentHomeTL: "https://pngtree.com/freepng/rose-gold-ornament_6234567.html",
-ornamentHomeTR: "https://pngtree.com/freepng/rose-gold-ornament_6234568.html",
-ornamentHomeBL: "https://pngtree.com/freepng/rose-gold-ornament_6234569.html",
-ornamentHomeBR: "https://pngtree.com/freepng/rose-gold-ornament_6234570.html",
-ornamentCoupleTL: "https://pngtree.com/freepng/rose-gold-ornament_6234571.html",
-ornamentCoupleTR: "https://pngtree.com/freepng/rose-gold-ornament_6234572.html",
-ornamentEventTL: "https://pngtree.com/freepng/rose-gold-ornament_6234573.html",
-ornamentEventTR: "https://pngtree.com/freepng/rose-gold-ornament_6234574.html",
-ornamentFooterTL: "https://pngtree.com/freepng/rose-gold-ornament_6234575.html",
-ornamentFooterTR: "https://pngtree.com/freepng/rose-gold-ornament_6234576.html",
-ornamentFooterBL: "https://pngtree.com/freepng/rose-gold-ornament_6234577.html",
-ornamentFooterBR: "https://pngtree.com/freepng/rose-gold-ornament_6234578.html"
+countdownTarget: "2026-12-31", bukuTamu: [],
+backgroundImg: "",
+borderFrame: "",
+ornamentHomeTL: "", ornamentHomeTR: "", ornamentHomeBL: "", ornamentHomeBR: "",
+ornamentCoupleTL: "", ornamentCoupleTR: "",
+ornamentEventTL: "", ornamentEventTR: "",
+ornamentFooterTL: "", ornamentFooterTR: "", ornamentFooterBL: "", ornamentFooterBR: ""
 };
 var decorFields = [
     'backgroundImg', 'borderFrame',
@@ -1022,7 +970,7 @@ var appData = null, dataSource = 'default', countdownInterval = null;
 var isMusicPlaying = false, currentLightboxIndex = 0;
 var galleryImages = [], rsvpList = [];
 var ticking = false, animationsInitialized = false;
-var bankIdCounter = 3;
+var bankIdCounter = 1;
 var pendingUploadField = null, pendingUploadPreviewId = null, pendingUploadType = 'image';
 var deferredPrompt = null;
 var $ = function(id) { return document.getElementById(id); };
@@ -1137,21 +1085,22 @@ function escapeHtml(str) {
 if (!str) return '';
 return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
+// ✅ PERBAIKAN: Fallback ke defaultData jika error
 async function fetchCloudData(clientId) {
 var statusEl = $('loader-status');
 if (statusEl) statusEl.textContent = 'Menghubungi server...';
 try {
-var url = GOOGLE_API_URL + "?id=" + (clientId || 'default') + "&action=getData";
-const response = await fetch(url);
-if (!response.ok) throw new Error('HTTP ' + response.status);
-const data = await response.json();
-if (data.status === "error") throw new Error(data.message);
-if (statusEl) statusEl.textContent = 'Data diterima dari cloud!';
-return data;
+    var url = GOOGLE_API_URL + "?id=" + (clientId || 'default') + "&action=getData";
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const data = await response.json();
+    if (data.status === "error") throw new Error(data.message);
+    if (statusEl) statusEl.textContent = 'Data diterima dari cloud!';
+    return data;
 } catch (err) {
-console.warn('Fetch cloud gagal:', err.message);
-if (statusEl) statusEl.textContent = 'Gagal terhubung, gunakan data default...';
-return null;
+    console.warn('Fetch cloud gagal:', err.message);
+    if (statusEl) statusEl.textContent = 'Gagal terhubung, gunakan data default...';
+    return null; // Return null agar pakai defaultData
 }
 }
 window.openPinModal = function() {
@@ -1418,7 +1367,7 @@ function renderBankSettings() {
 var container = $('bank-settings-container');
 if (!container) return;
 var banks = (appData && appData.banks) ? appData.banks : [];
-if (!banks.length) { banks = [{ id: 'b1', name: 'BCA', rek: '12345678', an: 'Luvinta', visible: true }, { id: 'b2', name: 'BNI', rek: '0982309823', an: 'Fatrus', visible: true }]; appData.banks = banks; }
+if (!banks.length) { banks = []; appData.banks = banks; }
 banks.forEach(function(b) { if (b.id && b.id.startsWith('b')) { var num = parseInt(b.id.replace('b', '')); if (num >= bankIdCounter) bankIdCounter = num + 1; } });
 container.innerHTML = banks.map(function(bank) {
 var checked = bank.visible !== false ? 'checked' : '';
@@ -1442,7 +1391,6 @@ showToast('Rekening baru ditambahkan', 'success');
 };
 window.removeBankSetting = function(id) {
 if (!appData || !appData.banks) return;
-if (appData.banks.length <= 1) { showToast('Minimal 1 rekening', 'error'); return; }
 appData.banks = appData.banks.filter(function(b) { return b.id !== id; });
 renderBankSettings();
 showToast('Rekening dihapus', 'info');
@@ -1877,18 +1825,22 @@ if ($('nama-tamu')) $('nama-tamu').innerText = guestName;
 if ($('rsvp-name') && guestName !== "Bapak/Ibu/Saudara/i") $('rsvp-name').value = guestName;
 buildGalleryUrlFields();
 var data = await fetchCloudData(currentClientId);
-if (data && data.status === 'success' && Object.keys(data).length > 2) {
-var merged = JSON.parse(JSON.stringify(defaultData));
-for (var key in data) { if (key !== 'bukuTamu' && key !== 'banks' && key !== 'status' && key !== 'client_id') merged[key] = data[key]; }
-if (data.banks && Array.isArray(data.banks)) merged.banks = data.banks;
-merged.bukuTamu = data.bukuTamu || [];
-if (data.showVideo !== undefined) merged.showVideo = data.showVideo;
-data = merged;
-dataSource = 'cloud';
+// ✅ PERBAIKAN: Jika data null atau error, pakai defaultData
+if (!data) {
+    data = JSON.parse(JSON.stringify(defaultData));
+    dataSource = 'default';
+} else if (data.status === 'success' && Object.keys(data).length > 2) {
+    var merged = JSON.parse(JSON.stringify(defaultData));
+    for (var key in data) { if (key !== 'bukuTamu' && key !== 'banks' && key !== 'status' && key !== 'client_id') merged[key] = data[key]; }
+    if (data.banks && Array.isArray(data.banks)) merged.banks = data.banks;
+    merged.bukuTamu = data.bukuTamu || [];
+    if (data.showVideo !== undefined) merged.showVideo = data.showVideo;
+    data = merged;
+    dataSource = 'cloud';
 } else {
-try { var localStr = localStorage.getItem('undanganData_v2_' + currentClientId); if (localStr) { data = JSON.parse(localStr); dataSource = 'local'; } else { data = null; } } catch (e) { data = null; }
+    data = JSON.parse(JSON.stringify(defaultData));
+    dataSource = 'default';
 }
-if (!data) { data = JSON.parse(JSON.stringify(defaultData)); dataSource = 'default'; }
 applyDataToHTML(data);
 if (dataSource === 'cloud' || dataSource === 'default') { try { localStorage.setItem('undanganData_v2_' + currentClientId, JSON.stringify(data)); } catch (e) {} }
 initScrollNav();
@@ -1897,8 +1849,9 @@ updateScrollProgress();
 $('main-loader').classList.add('fade-out');
 $('awal').style.visibility = 'visible';
 AOS.refresh();
+// ✅ PERBAIKAN: Path service worker ke parent folder
 if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('../../service-worker.js').then(function(reg) {
+navigator.serviceWorker.register('../service-worker.js').then(function(reg) {
 console.log('[PWA] Service Worker registered');
 }).catch(function(err) {
 console.warn('[PWA] SW registration failed:', err);
