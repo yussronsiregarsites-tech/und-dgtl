@@ -1,0 +1,78 @@
+{
+  "name": "Undangan Pernikahan Digital",
+  "short_name": "Undangan",
+  "description": "Undangan Pernikahan Digital - Fatrus & Luvinta",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fdf9f6",
+  "theme_color": "#8b703a",
+  "lang": "id-ID",
+  "dir": "ltr",
+  "categories": ["lifestyle", "social"],
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Lihat Undangan",
+      "short_name": "Undangan",
+      "description": "Buka halaman utama undangan",
+      "url": "./",
+      "icons": [
+        {
+          "src": "./icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Tema Gold",
+      "short_name": "Gold",
+      "description": "Buka tema Gold Elegant",
+      "url": "./gold/",
+      "icons": [
+        {
+          "src": "./icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Tema Rose",
+      "short_name": "Rose",
+      "description": "Buka tema Rose Pink",
+      "url": "./rose/",
+      "icons": [
+        {
+          "src": "./icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
