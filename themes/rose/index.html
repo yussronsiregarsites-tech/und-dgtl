@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="page-title">Undangan Pernikahan</title>
 <meta name="theme-color" content="#c47a7a">
-<meta name="description" content="Undangan Pernikahan">
+<meta name="description" content="Undangan Pernikahan Digital - Rose Theme">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Undangan">
 <meta name="mobile-web-app-capable" content="yes">
-<!-- ✅ PERBAIKAN: Path relatif ke parent folder (../) -->
-<link rel="manifest" href="../manifest.json">
-<link rel="apple-touch-icon" href="../icon-192.png">
+<!-- ✅ PERBAIKAN: Path ke parent folder (naik 2 level) -->
+<link rel="manifest" href="../../manifest.json">
+<link rel="apple-touch-icon" href="../../icon-192.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -250,7 +250,6 @@ transition: 0.3s ease; border: none; font-size: 18px;
     color: #6b7280;
     margin-bottom: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.5px;
 }
 .wa-promo-btn {
     display: inline-flex;
@@ -913,7 +912,6 @@ AOS.init({
 duration: 1000, once: false, mirror: true,
 easing: 'ease-out-cubic', offset: 80, anchorPlacement: 'top-bottom'
 });
-// ✅ PERBAIKAN: URL Google Apps Script baru
 var GOOGLE_API_URL = "https://script.google.com/macros/s/AKfycbwjZBwzDQbRNhgiK4R4AkjxQjKW0cxWHwkPewkrnA5GHk2GqoJtKp4kl47I7RQjvAvi-Q/exec";
 var GALLERY_COUNT = 6;
 var FETCH_TIMEOUT = 10000;
@@ -1080,12 +1078,26 @@ if (source === 'cloud') { el.className = 'sync-badge cloud'; el.innerHTML = '<i 
 else if (source === 'local') { el.className = 'sync-badge local'; el.innerHTML = '<i class="fa-solid fa-database"></i> Lokal'; }
 else { el.className = 'sync-badge offline'; el.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Default'; }
 }
-function normalizeDateString(d) { if (!d) return ""; if (d.indexOf('T') !== -1) { var dt = new Date(d); if (!isNaN(dt)) return dt.toISOString().split('T')[0]; } return d; }
+// ✅ PERBAIKAN: Normalisasi date ke format yyyy-MM-dd
+function normalizeDateString(d) { 
+    if (!d) return ""; 
+    if (d.indexOf('T') !== -1) { 
+        var dt = new Date(d); 
+        if (!isNaN(dt)) return dt.toISOString().split('T')[0]; 
+    } 
+    // Jika sudah format yyyy-MM-dd, return langsung
+    if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+    // Coba parse format lain
+    try {
+        var dt = new Date(d);
+        if (!isNaN(dt)) return dt.toISOString().split('T')[0];
+    } catch(e) {}
+    return d; 
+}
 function escapeHtml(str) {
 if (!str) return '';
 return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
-// ✅ PERBAIKAN: Fallback ke defaultData jika error
 async function fetchCloudData(clientId) {
 var statusEl = $('loader-status');
 if (statusEl) statusEl.textContent = 'Menghubungi server...';
@@ -1100,7 +1112,7 @@ try {
 } catch (err) {
     console.warn('Fetch cloud gagal:', err.message);
     if (statusEl) statusEl.textContent = 'Gagal terhubung, gunakan data default...';
-    return null; // Return null agar pakai defaultData
+    return null;
 }
 }
 window.openPinModal = function() {
@@ -1222,6 +1234,7 @@ throw new Error(result.message);
 showToast('Gagal ubah PIN: ' + err.message, 'error');
 }
 };
+// ✅ PERBAIKAN: Upload support audio dan client_id
 window.triggerUpload = function(fieldId, previewId, type) {
 pendingUploadField = fieldId;
 pendingUploadPreviewId = previewId || fieldId;
@@ -1247,7 +1260,14 @@ showToast('Mengupload ' + file.name + ' ...', 'info');
 var reader = new FileReader();
 reader.onload = function(ev) {
 var base64 = ev.target.result;
-var payload = { action: 'upload', filename: file.name, fieldName: pendingUploadField, base64Data: base64, client_id: currentClientId };
+// ✅ PERBAIKAN: Tambahkan client_id ke payload
+var payload = { 
+    action: 'upload', 
+    filename: file.name, 
+    fieldName: pendingUploadField, 
+    base64Data: base64,
+    client_id: currentClientId
+};
 fetch(GOOGLE_API_URL, { method: 'POST', body: JSON.stringify(payload) })
 .then(function(res) { return res.json(); })
 .then(function(result) {
@@ -1489,13 +1509,25 @@ startCountdown(normalizeDateString(data.countdownTarget));
 refreshAllPreviews(data);
 populateSettingsForm(data);
 }
+// ✅ PERBAIKAN: Normalisasi date saat populate settings
 function populateSettingsForm(data) {
-var fields = ['priaNick', 'priaFull', 'priaOrtu', 'priaIg', 'wanitaNick', 'wanitaFull', 'wanitaOrtu', 'wanitaIg', 'fotoSampul', 'fotoPria', 'fotoWanita', 'countdownTarget', 'musicUrl', 'akadDate', 'akadTime', 'akadLokasi', 'akadMapUrl', 'resepsiDate', 'resepsiTime', 'resepsiLokasi', 'resepsiMapUrl', 'dinnerDate', 'dinnerTime', 'dinnerLokasi', 'dinnerMapUrl', 'mapIframeUrl', 'story1Title', 'story1Desc', 'story1Img', 'story2Title', 'story2Desc', 'story2Img', 'videoYoutubeUrl'];
-fields.forEach(function(f) { var el = $('set-' + f); if (el && data[f] !== undefined) el.value = data[f]; });
-decorFields.forEach(function(f) {
-    var el = $('set-' + f);
-    if (el && data[f] !== undefined) el.value = data[f];
+var fields = ['priaNick', 'priaFull', 'priaOrtu', 'priaIg', 'wanitaNick', 'wanitaFull', 'wanitaOrtu', 'wanitaIg', 'fotoSampul', 'fotoPria', 'fotoWanita', 'musicUrl', 'akadDate', 'akadTime', 'akadLokasi', 'akadMapUrl', 'resepsiDate', 'resepsiTime', 'resepsiLokasi', 'resepsiMapUrl', 'dinnerDate', 'dinnerTime', 'dinnerLokasi', 'dinnerMapUrl', 'mapIframeUrl', 'story1Title', 'story1Desc', 'story1Img', 'story2Title', 'story2Desc', 'story2Img', 'videoYoutubeUrl'];
+fields.forEach(function(f) { 
+    var el = $('set-' + f); 
+    if (el && data[f] !== undefined) {
+        // ✅ PERBAIKAN: Normalisasi date untuk countdownTarget
+        if (f === 'countdownTarget') {
+            el.value = normalizeDateString(data[f]);
+        } else {
+            el.value = data[f];
+        }
+    } 
 });
+// ✅ PERBAIKAN: Normalisasi countdownTarget secara eksplisit
+var countdownEl = $('set-countdownTarget');
+if (countdownEl && data.countdownTarget) {
+    countdownEl.value = normalizeDateString(data.countdownTarget);
+}
 for (var i = 1; i <= GALLERY_COUNT; i++) { var el = $('set-galeri' + i); if (el && data['galeri' + i]) el.value = data['galeri' + i]; }
 var showVideoEl = $('set-showVideo');
 if (showVideoEl) showVideoEl.checked = data.showVideo !== false;
@@ -1504,51 +1536,6 @@ updateSyncBadge(dataSource);
 refreshAllPreviews(data);
 buildDecorGrids(data);
 }
-function buildDecorGrids(data) {
-    var sections = {
-        'decor-home-grid': ['ornamentHomeTL', 'ornamentHomeTR', 'ornamentHomeBL', 'ornamentHomeBR'],
-        'decor-couple-grid': ['ornamentCoupleTL', 'ornamentCoupleTR'],
-        'decor-event-grid': ['ornamentEventTL', 'ornamentEventTR'],
-        'decor-footer-grid': ['ornamentFooterTL', 'ornamentFooterTR', 'ornamentFooterBL', 'ornamentFooterBR']
-    };
-    for (var gridId in sections) {
-        var grid = $(gridId);
-        if (!grid) continue;
-        grid.innerHTML = '';
-        sections[gridId].forEach(function(field) {
-            var label = decorLabels[field] || field;
-            var url = (data && data[field]) ? data[field] : '';
-            var item = document.createElement('div');
-            item.className = 'decor-item';
-            item.innerHTML = 
-                '<div class="decor-preview" id="preview-' + field + '">' +
-                    '<img src="' + escapeHtml(url) + '" alt="preview" ' + (url ? '' : 'style="display:none;"') + '>' +
-                    '<span class="no-image" ' + (url ? 'style="display:none;"' : '') + '><i class="fa-regular fa-image"></i></span>' +
-                '</div>' +
-                '<div class="decor-info">' +
-                    '<div class="decor-label">' + label + '</div>' +
-                    '<input type="text" id="set-' + field + '" value="' + escapeHtml(url) + '" class="w-full px-2 py-1 border border-gray-200 rounded text-[10px] outline-none focus:border-rose-light" placeholder="URL">' +
-                '</div>' +
-                '<button type="button" onclick="triggerUpload(\'set-' + field + '\', \'' + field + '\')" class="decor-btn" title="Upload">' +
-                    '<i class="fa-solid fa-upload"></i>' +
-                '</button>';
-            grid.appendChild(item);
-        });
-    }
-}
-window.resetDecorToDefault = function() {
-    if (!confirm('Reset semua dekorasi ke default?')) return;
-    decorFields.forEach(function(f) {
-        if (defaultData[f]) {
-            var el = $('set-' + f);
-            if (el) el.value = defaultData[f];
-            if (appData) appData[f] = defaultData[f];
-            updatePreview(f, defaultData[f]);
-        }
-    });
-    buildDecorGrids(appData);
-    showToast('Dekorasi direset ke default', 'success');
-};
 function renderGallery() {
 var grid = $('gallery-grid'); if (!grid) return;
 grid.innerHTML = '';
@@ -1791,6 +1778,51 @@ div.innerHTML = '<label class="text-[11px] text-gray-500 font-semibold">Galeri '
 grid.appendChild(div);
 }
 }
+function buildDecorGrids(data) {
+    var sections = {
+        'decor-home-grid': ['ornamentHomeTL', 'ornamentHomeTR', 'ornamentHomeBL', 'ornamentHomeBR'],
+        'decor-couple-grid': ['ornamentCoupleTL', 'ornamentCoupleTR'],
+        'decor-event-grid': ['ornamentEventTL', 'ornamentEventTR'],
+        'decor-footer-grid': ['ornamentFooterTL', 'ornamentFooterTR', 'ornamentFooterBL', 'ornamentFooterBR']
+    };
+    for (var gridId in sections) {
+        var grid = $(gridId);
+        if (!grid) continue;
+        grid.innerHTML = '';
+        sections[gridId].forEach(function(field) {
+            var label = decorLabels[field] || field;
+            var url = (data && data[field]) ? data[field] : '';
+            var item = document.createElement('div');
+            item.className = 'decor-item';
+            item.innerHTML = 
+                '<div class="decor-preview" id="preview-' + field + '">' +
+                    '<img src="' + escapeHtml(url) + '" alt="preview" ' + (url ? '' : 'style="display:none;"') + '>' +
+                    '<span class="no-image" ' + (url ? 'style="display:none;"' : '') + '><i class="fa-regular fa-image"></i></span>' +
+                '</div>' +
+                '<div class="decor-info">' +
+                    '<div class="decor-label">' + label + '</div>' +
+                    '<input type="text" id="set-' + field + '" value="' + escapeHtml(url) + '" class="w-full px-2 py-1 border border-gray-200 rounded text-[10px] outline-none focus:border-rose-light" placeholder="URL">' +
+                '</div>' +
+                '<button type="button" onclick="triggerUpload(\'set-' + field + '\', \'' + field + '\')" class="decor-btn" title="Upload">' +
+                    '<i class="fa-solid fa-upload"></i>' +
+                '</button>';
+            grid.appendChild(item);
+        });
+    }
+}
+window.resetDecorToDefault = function() {
+    if (!confirm('Reset semua dekorasi ke default?')) return;
+    decorFields.forEach(function(f) {
+        if (defaultData[f]) {
+            var el = $('set-' + f);
+            if (el) el.value = defaultData[f];
+            if (appData) appData[f] = defaultData[f];
+            updatePreview(f, defaultData[f]);
+        }
+    });
+    buildDecorGrids(appData);
+    showToast('Dekorasi direset ke default', 'success');
+};
 window.addEventListener('beforeinstallprompt', function(e) {
 e.preventDefault();
 deferredPrompt = e;
@@ -1825,7 +1857,6 @@ if ($('nama-tamu')) $('nama-tamu').innerText = guestName;
 if ($('rsvp-name') && guestName !== "Bapak/Ibu/Saudara/i") $('rsvp-name').value = guestName;
 buildGalleryUrlFields();
 var data = await fetchCloudData(currentClientId);
-// ✅ PERBAIKAN: Jika data null atau error, pakai defaultData
 if (!data) {
     data = JSON.parse(JSON.stringify(defaultData));
     dataSource = 'default';
@@ -1849,10 +1880,10 @@ updateScrollProgress();
 $('main-loader').classList.add('fade-out');
 $('awal').style.visibility = 'visible';
 AOS.refresh();
-// ✅ PERBAIKAN: Path service worker ke parent folder
+// ✅ PERBAIKAN: Path service worker naik 2 level
 if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('../service-worker.js').then(function(reg) {
-console.log('[PWA] Service Worker registered');
+navigator.serviceWorker.register('../../service-worker.js', { scope: '../../' }).then(function(reg) {
+console.log('[PWA] Service Worker registered, scope:', reg.scope);
 }).catch(function(err) {
 console.warn('[PWA] SW registration failed:', err);
 });
