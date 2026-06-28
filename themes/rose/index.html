@@ -10,7 +10,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Undangan">
 <meta name="mobile-web-app-capable" content="yes">
-<!-- ✅ PERBAIKAN: Path ke parent folder (naik 2 level) -->
 <link rel="manifest" href="../../manifest.json">
 <link rel="apple-touch-icon" href="../../icon-192.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
@@ -747,50 +746,7 @@ transition: 0.3s ease; border: none; font-size: 18px;
 </div>
 </details>
 <details class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-<summary class="text-base font-bold text-gray-800 cursor-pointer select-none">3. 🎨 Dekorasi (Background, Border, Ornamen)</summary>
-<div class="mt-4 space-y-3">
-<p class="text-[11px] text-gray-500">Upload gambar kustom untuk mengubah tampilan dekorasi. Kosongkan untuk pakai default.</p>
-<div>
-<label class="text-[11px] text-gray-500 font-bold">🖼️ Background Utama</label>
-<div class="photo-upload-row mt-1">
-<div class="preview-wrap" id="preview-backgroundImg">
-<img src="" alt="preview" class="hidden" id="preview-img-backgroundImg">
-<span class="no-image" id="noimg-backgroundImg"><i class="fa-regular fa-image"></i></span>
-</div>
-<div class="field-group flex gap-2">
-<input type="text" id="set-backgroundImg" class="flex-1 px-2.5 py-1.5 border border-gray-200 rounded-lg outline-none text-xs focus:border-rose-light" placeholder="URL background">
-<button type="button" onclick="triggerUpload('set-backgroundImg', 'backgroundImg')" class="bg-rose text-white px-3 py-1.5 rounded-lg text-xs hover:bg-rose-mid transition whitespace-nowrap"><i class="fa-solid fa-upload mr-1"></i> Upload</button>
-</div>
-</div>
-</div>
-<div>
-<label class="text-[11px] text-gray-500 font-bold">🖼️ Border Frame (Sampul, Home, Footer)</label>
-<div class="photo-upload-row mt-1">
-<div class="preview-wrap" id="preview-borderFrame">
-<img src="" alt="preview" class="hidden" id="preview-img-borderFrame">
-<span class="no-image" id="noimg-borderFrame"><i class="fa-regular fa-image"></i></span>
-</div>
-<div class="field-group flex gap-2">
-<input type="text" id="set-borderFrame" class="flex-1 px-2.5 py-1.5 border border-gray-200 rounded-lg outline-none text-xs focus:border-rose-light" placeholder="URL border frame">
-<button type="button" onclick="triggerUpload('set-borderFrame', 'borderFrame')" class="bg-rose text-white px-3 py-1.5 rounded-lg text-xs hover:bg-rose-mid transition whitespace-nowrap"><i class="fa-solid fa-upload mr-1"></i> Upload</button>
-</div>
-</div>
-</div>
-<div class="decor-section-title">🏠 Ornamen Section Home (4 sudut)</div>
-<div class="decor-grid" id="decor-home-grid"></div>
-<div class="decor-section-title">💑 Ornamen Section Mempelai (2 sudut)</div>
-<div class="decor-grid" id="decor-couple-grid"></div>
-<div class="decor-section-title">📅 Ornamen Section Acara (2 sudut)</div>
-<div class="decor-grid" id="decor-event-grid"></div>
-<div class="decor-section-title">🔚 Ornamen Section Footer (4 sudut)</div>
-<div class="decor-grid" id="decor-footer-grid"></div>
-<button type="button" onclick="resetDecorToDefault()" class="w-full bg-gray-200 text-gray-700 py-2 rounded-lg text-xs font-semibold hover:bg-gray-300 transition mt-3">
-<i class="fa-solid fa-rotate-left mr-1"></i> Reset Semua Dekorasi ke Default
-</button>
-</div>
-</details>
-<details class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-<summary class="text-base font-bold text-gray-800 cursor-pointer select-none">4. Jadwal Acara & Peta</summary>
+<summary class="text-base font-bold text-gray-800 cursor-pointer select-none">3. Jadwal Acara & Peta</summary>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
 <div class="space-y-2"><p class="font-bold text-sm text-rose">Akad</p>
 <div><label class="text-[11px] text-gray-500">Tanggal</label><input type="text" id="set-akadDate" class="w-full px-2.5 py-1.5 border border-gray-200 rounded-lg outline-none text-sm focus:border-rose-light"></div>
@@ -817,7 +773,7 @@ transition: 0.3s ease; border: none; font-size: 18px;
 </div>
 </details>
 <details class="bg-gray-50 p-4 rounded-xl border border-gray-100" open>
-<summary class="text-base font-bold text-gray-800 cursor-pointer select-none">5. Rekening</summary>
+<summary class="text-base font-bold text-gray-800 cursor-pointer select-none">4. Rekening</summary>
 <div class="mt-4">
 <div id="bank-settings-container" class="space-y-3"></div>
 <button type="button" onclick="addBankSetting()" class="mt-3 inline-flex items-center gap-2 text-rose border border-rose rounded-lg px-4 py-2 text-sm hover:bg-rose hover:text-white transition font-medium">
@@ -826,7 +782,7 @@ transition: 0.3s ease; border: none; font-size: 18px;
 </div>
 </details>
 <details class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-<summary class="text-base font-bold text-gray-800 cursor-pointer select-none">6. Cerita, Galeri & Video</summary>
+<summary class="text-base font-bold text-gray-800 cursor-pointer select-none">5. Cerita, Galeri & Video</summary>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
 <div class="space-y-3"><p class="font-bold text-sm text-rose">Cerita</p>
 <div class="space-y-1">
@@ -869,6 +825,49 @@ transition: 0.3s ease; border: none; font-size: 18px;
 <p class="text-[11px] text-gray-500 font-bold mt-2">Foto Galeri (1-6)</p>
 <div class="space-y-2 mt-1" id="gallery-url-grid"></div>
 </div>
+</div>
+</details>
+<details class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+<summary class="text-base font-bold text-gray-800 cursor-pointer select-none">6. 🎨 Dekorasi (Background, Border, Ornamen)</summary>
+<div class="mt-4 space-y-3">
+<p class="text-[11px] text-gray-500">Upload gambar kustom untuk mengubah tampilan dekorasi. Kosongkan untuk pakai default.</p>
+<div>
+<label class="text-[11px] text-gray-500 font-bold">🖼️ Background Utama</label>
+<div class="photo-upload-row mt-1">
+<div class="preview-wrap" id="preview-backgroundImg">
+<img src="" alt="preview" class="hidden" id="preview-img-backgroundImg">
+<span class="no-image" id="noimg-backgroundImg"><i class="fa-regular fa-image"></i></span>
+</div>
+<div class="field-group flex gap-2">
+<input type="text" id="set-backgroundImg" class="flex-1 px-2.5 py-1.5 border border-gray-200 rounded-lg outline-none text-xs focus:border-rose-light" placeholder="URL background">
+<button type="button" onclick="triggerUpload('set-backgroundImg', 'backgroundImg')" class="bg-rose text-white px-3 py-1.5 rounded-lg text-xs hover:bg-rose-mid transition whitespace-nowrap"><i class="fa-solid fa-upload mr-1"></i> Upload</button>
+</div>
+</div>
+</div>
+<div>
+<label class="text-[11px] text-gray-500 font-bold">🖼️ Border Frame (Sampul, Home, Footer)</label>
+<div class="photo-upload-row mt-1">
+<div class="preview-wrap" id="preview-borderFrame">
+<img src="" alt="preview" class="hidden" id="preview-img-borderFrame">
+<span class="no-image" id="noimg-borderFrame"><i class="fa-regular fa-image"></i></span>
+</div>
+<div class="field-group flex gap-2">
+<input type="text" id="set-borderFrame" class="flex-1 px-2.5 py-1.5 border border-gray-200 rounded-lg outline-none text-xs focus:border-rose-light" placeholder="URL border frame">
+<button type="button" onclick="triggerUpload('set-borderFrame', 'borderFrame')" class="bg-rose text-white px-3 py-1.5 rounded-lg text-xs hover:bg-rose-mid transition whitespace-nowrap"><i class="fa-solid fa-upload mr-1"></i> Upload</button>
+</div>
+</div>
+</div>
+<div class="decor-section-title">🏠 Ornamen Section Home (4 sudut)</div>
+<div class="decor-grid" id="decor-home-grid"></div>
+<div class="decor-section-title">💑 Ornamen Section Mempelai (2 sudut)</div>
+<div class="decor-grid" id="decor-couple-grid"></div>
+<div class="decor-section-title">📅 Ornamen Section Acara (2 sudut)</div>
+<div class="decor-grid" id="decor-event-grid"></div>
+<div class="decor-section-title">🔚 Ornamen Section Footer (4 sudut)</div>
+<div class="decor-grid" id="decor-footer-grid"></div>
+<button type="button" onclick="resetDecorToDefault()" class="w-full bg-gray-200 text-gray-700 py-2 rounded-lg text-xs font-semibold hover:bg-gray-300 transition mt-3">
+<i class="fa-solid fa-rotate-left mr-1"></i> Reset Semua Dekorasi ke Default
+</button>
 </div>
 </details>
 <details class="bg-gray-50 p-4 rounded-xl border border-gray-100">
@@ -1078,16 +1077,13 @@ if (source === 'cloud') { el.className = 'sync-badge cloud'; el.innerHTML = '<i 
 else if (source === 'local') { el.className = 'sync-badge local'; el.innerHTML = '<i class="fa-solid fa-database"></i> Lokal'; }
 else { el.className = 'sync-badge offline'; el.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Default'; }
 }
-// ✅ PERBAIKAN: Normalisasi date ke format yyyy-MM-dd
 function normalizeDateString(d) { 
     if (!d) return ""; 
     if (d.indexOf('T') !== -1) { 
         var dt = new Date(d); 
         if (!isNaN(dt)) return dt.toISOString().split('T')[0]; 
     } 
-    // Jika sudah format yyyy-MM-dd, return langsung
     if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
-    // Coba parse format lain
     try {
         var dt = new Date(d);
         if (!isNaN(dt)) return dt.toISOString().split('T')[0];
@@ -1234,7 +1230,6 @@ throw new Error(result.message);
 showToast('Gagal ubah PIN: ' + err.message, 'error');
 }
 };
-// ✅ PERBAIKAN: Upload support audio dan client_id
 window.triggerUpload = function(fieldId, previewId, type) {
 pendingUploadField = fieldId;
 pendingUploadPreviewId = previewId || fieldId;
@@ -1260,7 +1255,6 @@ showToast('Mengupload ' + file.name + ' ...', 'info');
 var reader = new FileReader();
 reader.onload = function(ev) {
 var base64 = ev.target.result;
-// ✅ PERBAIKAN: Tambahkan client_id ke payload
 var payload = { 
     action: 'upload', 
     filename: file.name, 
@@ -1509,13 +1503,11 @@ startCountdown(normalizeDateString(data.countdownTarget));
 refreshAllPreviews(data);
 populateSettingsForm(data);
 }
-// ✅ PERBAIKAN: Normalisasi date saat populate settings
 function populateSettingsForm(data) {
 var fields = ['priaNick', 'priaFull', 'priaOrtu', 'priaIg', 'wanitaNick', 'wanitaFull', 'wanitaOrtu', 'wanitaIg', 'fotoSampul', 'fotoPria', 'fotoWanita', 'musicUrl', 'akadDate', 'akadTime', 'akadLokasi', 'akadMapUrl', 'resepsiDate', 'resepsiTime', 'resepsiLokasi', 'resepsiMapUrl', 'dinnerDate', 'dinnerTime', 'dinnerLokasi', 'dinnerMapUrl', 'mapIframeUrl', 'story1Title', 'story1Desc', 'story1Img', 'story2Title', 'story2Desc', 'story2Img', 'videoYoutubeUrl'];
 fields.forEach(function(f) { 
     var el = $('set-' + f); 
     if (el && data[f] !== undefined) {
-        // ✅ PERBAIKAN: Normalisasi date untuk countdownTarget
         if (f === 'countdownTarget') {
             el.value = normalizeDateString(data[f]);
         } else {
@@ -1523,7 +1515,6 @@ fields.forEach(function(f) {
         }
     } 
 });
-// ✅ PERBAIKAN: Normalisasi countdownTarget secara eksplisit
 var countdownEl = $('set-countdownTarget');
 if (countdownEl && data.countdownTarget) {
     countdownEl.value = normalizeDateString(data.countdownTarget);
@@ -1742,7 +1733,8 @@ showToast('Lokal saja: ' + err.message, 'info');
 })
 .finally(function() {
 setTimeout(function() { statusEl.textContent = ''; }, 3000);
-btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up mr-1"></i> Simpan';
+btn.disabled = false;
+btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up mr-1"></i> Simpan';
 });
 };
 window.refreshFromCloud = function() {
@@ -1880,7 +1872,6 @@ updateScrollProgress();
 $('main-loader').classList.add('fade-out');
 $('awal').style.visibility = 'visible';
 AOS.refresh();
-// ✅ PERBAIKAN: Path service worker naik 2 level
 if ('serviceWorker' in navigator) {
 navigator.serviceWorker.register('../../service-worker.js', { scope: '../../' }).then(function(reg) {
 console.log('[PWA] Service Worker registered, scope:', reg.scope);
